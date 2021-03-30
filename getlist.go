@@ -29,7 +29,7 @@ func GetPage(url string) (string, error) {
 
 func GetList(url, start, end string) ([]string, error) {
 	list := []string{}
-	body, err := getPage(url)
+	body, err := GetPage(url)
 	if err != nil {
 		return nil, err
 	}
