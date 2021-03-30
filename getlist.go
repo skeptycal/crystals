@@ -29,7 +29,7 @@ func GetPage(url string) (string, error) {
 
 func GetList(url, start, end string) ([]string, error) {
 	list := []string{}
-	body, err := GetPage(url)
+	contents, err := GetPage(url)
 	if err != nil {
 		return nil, err
 	}
@@ -37,16 +37,16 @@ func GetList(url, start, end string) ([]string, error) {
 	var a, b int
 
 	for {
-		a = strings.Index(body, start) + 1
+		a = strings.Index(contents, start) + 1
 		if a < 1 {
 			break
 		}
-		b = strings.Index(body[a:], end) - 1
+		b = strings.Index(contents[a:], end) - 1
 		if b < 1 {
-			b = len(body)
+			b = len(contents) - 1
 		}
 
-		item := body[a:b]
+		item := contents[a:b]
 
 		list = append(list, item)
 

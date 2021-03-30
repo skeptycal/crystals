@@ -14,7 +14,7 @@ const (
 )
 
 func main() {
-	list, err := crystals.GetList(sourceSite)
+	list, err := crystals.GetList(sourceSite, tagStart, tagEnd)
 	if err != nil {
 		os.Exit(1)
 	}
