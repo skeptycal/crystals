@@ -1,9 +1,11 @@
+// Package crystals is a sample implementation of web data scraping
 package crystals
 
 import (
 	"fmt"
 	"io"
 	"net/http"
+	"strings"
 )
 
 func getPage(url string) (string, error) {
@@ -11,8 +13,9 @@ func getPage(url string) (string, error) {
 	if err != nil {
 		return "", err
 	}
+
 	if r.StatusCode != http.StatusOK {
-		return "", fmt.Errorf("http error: %v", http.StatusText)
+		return "", fmt.Errorf("http error: %s", http.StatusText)
 	}
 
 	defer r.Body.Close()
@@ -24,13 +27,29 @@ func getPage(url string) (string, error) {
 	return string(buf), nil
 }
 
-func getList(url, start, end string) (string, error) {
+func getList(url, start, end string) ([]string, error) {
+	list := []string{}
 	body, err := getPage(url)
 	if err != nil {
-		return "", err
+		return nil, err
 	}
 
+	var a, b int
 
-	for
+	for {
+		a = strings.Index(body, start) + 1
+		if a < 1 {
+			break
+		}
+		b = strings.Index(body[a:], end) - 1
+		if b < 1 {
+			b = len(body)
+		}
 
+		item := body[a:b]
+
+		list = append(list, item)
+
+	}
+	return list, nil
 }
