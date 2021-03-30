@@ -1,0 +1,4 @@
+github.com/skeptycal/util/ansi v0.0.0-20210330180924-46fb334083b7 h1:A4K+77oXBQ1WQlwZYrIrO+6L9wscRQd2GEJ8W11fDxE=
+github.com/skeptycal/util/ansi v0.0.0-20210330180924-46fb334083b7/go.mod h1:TnpGDeqDTGEWFARpsRpv3jg/GA+J0tuShW0MdoQYq8g=
+github.com/skeptycal/util/stringutils v0.0.0-20210327131358-3c9cdad9bb2e/go.mod h1:KyL1YI+MkVKpm+IkH4YUOc1NDoBIGMr6Eq4Slqd8RfA=
+golang.org/x/sys v0.0.0-20210324051608-47abb6519492/go.mod h1:h1NjWce9XRLGQEsW7wpKNCjG9DtNlClVuFLEZdDNbEs=

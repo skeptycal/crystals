@@ -2,9 +2,10 @@ package main
 
 import (
 	"fmt"
-	"os"
+	"strings"
 
 	"github.com/skeptycal/crystals"
+	"github.com/skeptycal/util/ansi"
 )
 
 const (
@@ -13,12 +14,31 @@ const (
 	tagEnd     = `</h5>`
 )
 
+func AlternateColors(s string) string {
+	for _, line := range strings.Split(s, "\n") {
+		ansi.Print(color, line)
+	}
+}
+
 func main() {
-	list, err := crystals.GetList(sourceSite, tagStart, tagEnd)
+
+	fmt.Println("site: ", sourceSite)
+	fmt.Println("tagStart: ", tagStart)
+	fmt.Println("tagEnd: ", tagEnd)
+
+	page, err := crystals.GetPage(sourceSite)
 	if err != nil {
-		os.Exit(1)
+		fmt.Println(fmt.Errorf("error retrieving page contents: %v", err))
 	}
-	for _, item := range list {
-		fmt.Println(item)
-	}
+
+	fmt.Println()
+	fmt.Println(page)
+
+	// list, err := crystals.GetList(sourceSite, tagStart, tagEnd)
+	// if err != nil {
+	// 	os.Exit(1)
+	// }
+	// for _, item := range list {
+	// 	fmt.Println(item)
+	// }
 }
