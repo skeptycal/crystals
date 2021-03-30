@@ -8,7 +8,7 @@ import (
 	"strings"
 )
 
-func getPage(url string) (string, error) {
+func GetPage(url string) (string, error) {
 	r, err := http.Get(url)
 	if err != nil {
 		return "", err
@@ -27,7 +27,7 @@ func getPage(url string) (string, error) {
 	return string(buf), nil
 }
 
-func getList(url, start, end string) ([]string, error) {
+func GetList(url, start, end string) ([]string, error) {
 	list := []string{}
 	body, err := getPage(url)
 	if err != nil {
