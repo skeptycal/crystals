@@ -1,5 +1,12 @@
 package main
 
+import (
+	"fmt"
+	"os"
+
+	"github.com/skeptycal/crystals"
+)
+
 const (
 	sourceSite = `https://thecrystalcouncil.com/crystals`
 	tagStart   = `<h5 class="ml-2 mt-2 mb-0 text-dark">`
@@ -7,5 +14,11 @@ const (
 )
 
 func main() {
-	crystals.getList(sourceSite)
+	list, err := crystals.GetList(sourceSite)
+	if err != nil {
+		os.Exit(1)
+	}
+	for _, item := range list {
+		fmt.Println(item)
+	}
 }
